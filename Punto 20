@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+    unsigned int seg, min, hor, segf;
+    printf("Bienvinido a nuestro programa, por favor ingrese su cantidad de segundos \n");
+    do
+    {
+        scanf("%d", &seg);
+        if (seg>86400)
+        {
+            printf("valor no valido, por favor, ingrese un valor menor a 86400 \n");
+        }
+    }while (seg>86400);
+    hor=seg/3600;
+    min=(seg%3600)/60;
+    segf=(seg%3600)%60;
+    printf("sus segundos equivalen a %d horas, %d minutos y %d segundos", hor, min, segf);
+    return 0;
+}
