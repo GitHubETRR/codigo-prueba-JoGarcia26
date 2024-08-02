@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int mayorDeDos(int, int)
+int main()
+{
+    printf("Bienvenido a nuestro ");
+
+    return 0;
+}
+int mayorDeDos (int A, int B);
+{
+    if (A>B){
+        printf("Su variable A es mayor que la B");
+    }
+    else{
+        printf("Tu variable B es mayor que la A");
+    }
+    return 0;
+}
