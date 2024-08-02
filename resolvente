@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+float calcularDiscri(float,float,float);
+float calcularRaiz1(float,float,float);
+float calcularRaiz2(float,float,float);
+
+int main() {
+    float a,b,c;
+    float discri, raiz1, raiz2;
+    printf("Ingrese el coeficiente a: ");
+    scanf("%f",&a);
+    printf("Ingrese el coeficiente b: ");
+    scanf("%f",&b);
+    printf("Ingrese el coeficiente c: ");
+    scanf("%f",&c);
+    discri = calcularDiscri(a,b,c);
+    if (discri < 0) printf("La ecuacion no tiene raices reales.\n");
+    else{
+        raiz1 = calcularRaiz1(a, b, discri);
+        raiz2 = calcularRaiz2(a, b, discri);
+        printf("Las raíces de la ecuación son: %f y %f\n",raiz1,raiz2);
+    }
+    return 0;
+}
+float calcularDiscri(float a, float b, float c) {
+    return b * b - 4 * a * c;
+}
+float calcularRaiz1(float a,float b,float discri) {
+    return (-b + sqrt(discri)) / (2 * a);
+}
+float calcularRaiz2(float a,float b,float discri) {
+    return (-b - sqrt(discri)) / (2 * a);
+}
