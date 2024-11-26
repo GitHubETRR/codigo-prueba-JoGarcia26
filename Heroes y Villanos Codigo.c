@@ -17,8 +17,8 @@ typedef struct {
 } Personaje;
 
 typedef struct {
-    int daño_infringido;
-    int daño_recibido;
+    int danio_infringido;
+    int danio_recibido;
 } ResultadoAtaque;
 
 ResultadoAtaque atacar(Personaje *atacante, Personaje *defensor) {
@@ -30,7 +30,7 @@ ResultadoAtaque atacar(Personaje *atacante, Personaje *defensor) {
         if (atacante->cooldown_poderes[i] > 0) {
             printf("%d. %s (Bloqueado por %d turnos)\n", i + 1, atacante->poderes[i], atacante->cooldown_poderes[i]);
         } else {
-            printf("%d. %s (Daño: %d)\n", i + 1, atacante->poderes[i], atacante->valores_poderes[i]);
+            printf("%d. %s (Danio: %d)\n", i + 1, atacante->poderes[i], atacante->valores_poderes[i]);
         }
     }
     do {
@@ -51,22 +51,22 @@ ResultadoAtaque atacar(Personaje *atacante, Personaje *defensor) {
         eleccion_defensa--;
     } while (defensor->cooldown_defensas[eleccion_defensa] > 0);
 
-    int daño = atacante->valores_poderes[eleccion_ataque] - defensor->valores_defensas[eleccion_defensa];
-    if (daño < 0) daño = 0;
+    int danio = atacante->valores_poderes[eleccion_ataque] - defensor->valores_defensas[eleccion_defensa];
+    if (danio < 0) danio = 0;
 
     int critico = rand() % 100 < 20; 
     if (critico) {
-        printf("¡Increíble! ¡Ataque crítico! %s inflige daño aumentado.\n", atacante->nombre);
-        daño = (int)(daño * 1.5);
+        printf("¡Increíble! ¡Ataque crítico! %s inflige danio aumentado.\n", atacante->nombre);
+        danio = (int)(danio * 1.5);
     }
     
-    defensor->vida -= daño;
+    defensor->vida -= danio;
     if (defensor->vida < 0) defensor->vida = 0;
-    resultado.daño_infringido = daño;
-    resultado.daño_recibido = daño;
+    resultado.danio_infringido = danio;
+    resultado.danio_recibido = danio;
     printf("%s usa %s contra %s que utiliza %s. Daño causado: %d.\n",
-           atacante->nombre, atacante->poderes[eleccion_ataque], defensor->nombre,
-           defensor->defensas[eleccion_defensa], daño);
+    atacante->nombre, atacante->poderes[eleccion_ataque], defensor->nombre,
+    defensor->defensas[eleccion_defensa], danio);
     atacante->cooldown_poderes[eleccion_ataque] = 3; 
     defensor->cooldown_defensas[eleccion_defensa] = 2; 
     return resultado;
@@ -95,10 +95,7 @@ int main() {
     printf("¡Prepárense para conocer a nuestros valientes luchadores!\n");
     printf("Presentando a los personajes:\n");
 
-    Personaje evilBunny = {
-        "EvilBunny",
-        "¡Soy EvilBunny, el temido conejo oscuro de las sombras! ¡Nadie puede detenerme!",
-        800,
+    Personaje evilBunny = {"EvilBunny", "¡Soy EvilBunny, el temido conejo oscuro de las sombras! ¡Nadie puede detenerme!",800,
         {"Booker T", "Tarot", "Tú no metes cabra"},
         {"Me fui de vacaciones", "Amorfoda", "Dakiti"},
         {500, 200, 350},
@@ -107,10 +104,7 @@ int main() {
         {0, 0, 0}
     };
 
-    Personaje almighty = {
-        "Almighty",
-        "¡Soy Almighty, el guerrero invencible del género! ¡Estoy aquí para demostrar mi poder!",
-        1000,
+    Personaje almighty = {"Almighty", "¡Soy Almighty, el guerrero invencible del género! ¡Estoy aquí para demostrar mi poder!",1000,
         {"Esclava", "Asalto", "Soldado y Profeta"},
         {"Sólida", "Vacío", "Indiferente"},
         {400, 250, 300},
@@ -127,7 +121,6 @@ int main() {
         almighty = actualizarCooldowns(almighty);
 
         ResultadoAtaque resultado = atacar(&evilBunny, &almighty);
-        almighty.vida -= resultado.daño_recibido;
         mostrarEstadisticas(almighty);
         if (Derrotado(almighty)) {
             printf("%s ha derrotado a %s. ¡Victoria para el lado oscuro!\n", evilBunny.nombre, almighty.nombre);
@@ -135,7 +128,6 @@ int main() {
         }
 
         resultado = atacar(&almighty, &evilBunny);
-        evilBunny.vida -= resultado.daño_recibido;
         mostrarEstadisticas(evilBunny);
         if (Derrotado(evilBunny)) {
             printf("%s ha derrotado a %s. ¡El guerrero invencible ha triunfado!\n", almighty.nombre, evilBunny.nombre);
