@@ -1,0 +1,16 @@
+#include <stdio.h>
+#define ITA 1 
+#define ESP 0
+
+    int main (void){
+        int idioma=ITA;
+        printf("ingrese 1 para italiano 0 para español\n");
+        scanf("%d",&idioma);
+        char txt1[2][20]={"Hola Juli te amo","Ciao juli ti amo"};
+        printf("%s\n", txt1[idioma]);
+        printf("ingrese 1 para italiano 0 para español\n");
+        scanf("%d",&idioma);
+        char txt2[2][30]={"Chau juli sos muy linda", "Ciao juli sei molto bella"};
+        printf("%s\n", txt2[idioma]);
+        return 0;
+}

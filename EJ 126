@@ -1,0 +1,41 @@
+/*126.	Definir un tipo de dato llamado Fecha compuesto por 3 campos llamados día, mes y año.
+Además defina y desarrolle sus operaciones getDia(), getMes(), getAnio() y isBisiesto().*/
+#include <stdio.h>
+
+    typedef struct {
+        int dia;
+        int mes;
+        int anio;
+    } Fecha;
+    int getDia(Fecha f) {
+        return f.dia;
+    }
+    int getMes(Fecha f) {
+        return f.mes;
+    }
+    int getAnio(Fecha f) {
+        return f.anio;
+    }
+    int isBisiesto(Fecha f) {
+        if ((f.anio % 4 == 0 && f.anio % 100 != 0) || (f.anio % 400 == 0)) {
+        return 1;
+    }
+    return 0;
+    }
+
+    int main() {
+        Fecha hoy;
+        printf("Ingrese el día: ");
+        scanf("%d", &hoy.dia);
+        printf("Ingrese el mes: ");
+        scanf("%d", &hoy.mes);
+        printf("Ingrese el año: ");
+        scanf("%d", &hoy.anio);
+        printf("Fecha ingresada: %d/%d/%d\n", getDia(hoy), getMes(hoy), getAnio(hoy));
+        if (isBisiesto(hoy)) {
+        printf("El año %d es bisiesto.\n", getAnio(hoy));
+        } else{
+            printf("El año %d no es bisiesto.\n", getAnio(hoy)); 
+        }
+  return 0;
+}

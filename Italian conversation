@@ -1,0 +1,35 @@
+#include <stdio.h>
+#define ITA 1 
+#define ESP 0
+
+    int main (void){
+        int idioma=ITA;
+        printf("Bienvenido a esta conversacion, bilingue, en la que vos elegis que idioma queres hablar\n");
+        printf("Ingrese 1 para italiano 0 para español\n");
+        scanf("%d",&idioma);
+        char txt1[2][20]={"Hola, ¿Como estas?","Ciao, come stai?"};
+        printf("%s\n", txt1[idioma]);
+        char txt2[2][30]={"Muy bien Gracias!", "Molto bene, grazie"};
+        printf("%s\n", txt2[idioma]);
+        printf("¿Quieres seguir? Pone 1 si, si; pone cualquier otro si no\n");
+        int chau;
+        scanf("%d", &chau);
+        if(chau=1){
+            printf("Gracias por seguir conmigo (Grazie per essere rimasti con me)\n");
+            printf("Ingrese 1 para italiano 0 para español\n");
+            scanf("%d",&idioma);
+            char txt3[2][20]={"¿Que hora es?", "Che ora è?"};
+            printf("%s\n", txt3[idioma]);
+            char txt4[2][36]={"Son las tres y media de la tarde", "Sono le tre e mezza del pomeriggio"};
+            printf("%s\n", txt4[idioma]);
+            char txt5[2][20]={"¿Como te llamas?", "Come ti chiami?"};
+            printf("%s\n", txt5[idioma]);
+            char txt6[2][45]={"Me llamo Matias Palmieri y tengo 21 años", "Mi chiamo Matias Palmieri e ho ventun anni"};
+            printf("%s\n", txt6[idioma]);
+            printf("ciao");
+        }
+        else(chau!=1);{
+            printf("ciao");
+            return 0;
+        }
+    }
